@@ -27,6 +27,7 @@
     "react-masonry-css": "^1.0.16",
     "react-router-dom": "^6.10.0",
     "react-scripts": "5.0.1",
+    "react-scroll": "^1.8.9",
     "require": "^2.4.20",
     "web-vitals": "^2.1.4"
   },
