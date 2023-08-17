@@ -146,7 +146,7 @@ function Navbar() {
                 <div className='login-dropdown'>
 
                     <GoogleOAuthProvider
-                        clientId='604152272078-68ge5jv3cd8sglkkgc8gactsk547f85e.apps.googleusercontent.com'
+                        clientId='443172810373-snnv2m331j9e6ng9sph7n27e09s1t26m.apps.googleusercontent.com'
                         render={(renderProps) => (
                             <button type='button' className='g-btn'>
                                 Sign in with Google
