@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { googleLogout} from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
 
-
+// 1
 function Navbar() {
 
     const [showDropdown, setShowDropdown] = useState(false);
