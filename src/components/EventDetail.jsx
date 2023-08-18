@@ -234,7 +234,7 @@ const EventDetail = ({ user }) => {
           </div>
           <div className='el-urlcopy'>
             <span>Copy this URL</span>
-            <p>http://localhost:3000/event-detail/{event._id}</p>
+            <p>https://trecnoc-frontend.vercel.app/event-detail/{event._id}</p>
           </div>
           <div className='el-signups'>
             <span>Sign-ups </span>
