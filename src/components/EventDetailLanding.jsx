@@ -37,7 +37,6 @@ const EventDetailLanding = () => {
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
-
   const currentTime = new Date();
   var timeZoneOffset = currentTime.getTimezoneOffset();
   currentTime.setMinutes(currentTime.getMinutes() - timeZoneOffset);
@@ -45,13 +44,16 @@ const EventDetailLanding = () => {
   const fetchEvents = async () => {
     try {
       const response = await fetch(`${process.env.REACT_APP_API_NAVIGATION}/getspecevent/${eventId}`);
-      if (!response.ok) {
+      const selectedEvent = await response.json();
+      if (selectedEvent.status === 'inactive') {
+
         setEvent({
-          title: 'Event Not Found',
-          description: 'This event is either expired or the link is wrong',
+          title: selectedEvent.title,
+          description: 'This event has been conducted',
         });
-      } else {
-        const selectedEvent = await response.json();
+      }
+      else {
+
         setEvent(selectedEvent);
       }
     } catch (error) {
@@ -61,7 +63,7 @@ const EventDetailLanding = () => {
 
   useEffect(() => {
     fetchEvents();
-  }, []);
+  }, [eventId]);
 
 
   const fetchPeople = async () => {
@@ -103,7 +105,8 @@ const EventDetailLanding = () => {
         (res) => res.json()
       );
       const existingUser = allUsers.find((user) => {
-        if (user.eventId === eventId) {
+
+        if (user.eventId === eventId && event.status === 'active') {
           if (user.email === email) {
             return true;
           } else {
@@ -116,7 +119,7 @@ const EventDetailLanding = () => {
 
       if (existingUser) {
         setAlertTitle("Alert");
-        setAlertMessage("You already joined the event!");
+        setAlertMessage("You already joined the event! Or the event has been conducted");
         setShowAlert(true);
         setIsJoiningEvent(false);
 
@@ -173,7 +176,7 @@ const EventDetailLanding = () => {
               <h1>{event.title}</h1>
               <p>{event.description}</p>
             </div>
-            {event.title !== 'Event Not Found' && (
+            {event.status === 'active' && (
               <>
                 <div className='sign-elp'>
                   <p>{people.length} Signups</p>

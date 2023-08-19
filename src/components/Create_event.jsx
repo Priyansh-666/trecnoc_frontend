@@ -44,6 +44,7 @@ function Create_event({ user }) {
     userId: user?.sub,
     date: dateTime,
     signups: 0,
+    status:"active"
   };
 
   const handleSubmitBtn = async (e) => {

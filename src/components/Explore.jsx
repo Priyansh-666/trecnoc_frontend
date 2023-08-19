@@ -19,20 +19,20 @@ const Explore = () => {
   const currentTime = new Date();
   var timeZoneOffset = currentTime.getTimezoneOffset();
   currentTime.setMinutes(currentTime.getMinutes() - timeZoneOffset);
-
+  
   useEffect(() => {
     const fetchEvents = async () => {
       const allEvents = await fetch(`${process.env.REACT_APP_API_NAVIGATION}/getevent`).then(res =>
         res.json()
       );
-
-      setEvents(allEvents);
+      const activeEvents = allEvents.filter(event => event.status === "active");
+  
+      setEvents(activeEvents);
     };
-
-
-
+  
     fetchEvents();
   }, []);
+  
 
   const navtodetails = event => {
     const eventId = event._id;

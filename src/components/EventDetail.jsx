@@ -230,7 +230,7 @@ const EventDetail = ({ user }) => {
           )}
           <div className='el-time'>
           <span>Time of event</span>
-          <p>{new Date(new Date(event.date).getTime() + timeZoneOffset * 60 * 1000).toLocaleString('en-US', options)}</p>
+          <p>{new Date(new Date(event.date).getTime() + timeZoneOffset * 60 * 1000).toLocaleString('en-US', options)} | <b>{event.status}</b></p>
           </div>
           <div className='el-urlcopy'>
             <span>Copy this URL</span>
