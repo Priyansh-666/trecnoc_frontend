@@ -36,6 +36,7 @@ function Create_event({ user }) {
   var dateTime = new Date(datetime);
   var timeZoneOffset = dateTime.getTimezoneOffset();
   dateTime.setMinutes(dateTime.getMinutes() - timeZoneOffset);
+  const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   
   const doc = {
     id: uuidv4,
@@ -44,7 +45,8 @@ function Create_event({ user }) {
     userId: user?.sub,
     date: dateTime,
     signups: 0,
-    status:"active"
+    status:"active",
+    timezone:userTimeZone
   };
 
   const handleSubmitBtn = async (e) => {
