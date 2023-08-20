@@ -88,7 +88,7 @@ const EventDetailLanding = () => {
         body: JSON.stringify({
           recipientEmails: [email],
           subject: `Welcome to the ${event.title}`,
-          message: `Dear ${name},\n\nThank you for joining the event! We look forward to seeing you there.\n\nThe timings for the event are ${new Date(new Date(event.date).getTime() + timeZoneOffset * 60 * 1000).toLocaleString('en-US', options)} \n\nBest regards,\nThe Event Team`,
+          message: `Dear ${name},\n\nThank you for joining the event!\n\nWe look forward to seeing you there.\n\nThe timings for the event are ${new Date(new Date(event.date).getTime() + timeZoneOffset * 60 * 1000).toLocaleString('en-US', options)} \n\nBest regards,\nThe Event Team`,
           password: "xwrlhfkrayquvgrx"
         }),
       });
