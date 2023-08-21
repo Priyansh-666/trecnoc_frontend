@@ -93,6 +93,7 @@ const EventDetailLanding = () => {
           eventTime: event.date,
           eventSubject: event.title,
           eventDescription: event.description,
+          eventTimezone:event.timezone
         }),
       });
     } catch (error) {
