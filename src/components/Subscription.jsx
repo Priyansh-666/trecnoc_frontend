@@ -14,14 +14,11 @@ function Subscription({ user }) {
   }, [user, navigate]);
 
   const payment = async (price) => {
-    if (price === 5) {
-      amount = 5
-    }
     if (price === 15) {
-      amount = 20
+      amount = 0 
     }
     if (price === 40) {
-      amount = 50
+      amount = 0 
     }
 
     try {
@@ -60,7 +57,7 @@ function Subscription({ user }) {
           </li>
           <li className='line-thru'>
             <span class="material-icons">check_circle</span>
-            <span>AI generated picture / event</span>
+            <span>AI generated poster </span>
           </li>
           <li className='line-thru'>
             <span class="material-icons">check_circle</span>
@@ -75,7 +72,7 @@ function Subscription({ user }) {
             <span>Access to influencers</span>
           </li>
         </ul>
-        <button onClick={() => payment(5)}>Choose Plan</button>
+        <button className='base-plan'>Current Plan</button>
       </div>
 
       <div className='sub-cards paid'>
@@ -90,11 +87,11 @@ function Subscription({ user }) {
             <span class="material-icons">
               check_circle
             </span>
-            <span>1 event</span>    
+            <span>5 events</span>    
           </li>
           <li>
             <span class="material-icons">check_circle</span>
-            <span>AI generated picture / event</span>
+            <span>AI generated poster</span>
           </li>
           <li>
             <span class="material-icons">check_circle</span>
@@ -109,7 +106,7 @@ function Subscription({ user }) {
             <span className='line-thru'>Access to influencers</span>
           </li>
         </ul>
-        <button onClick={() => payment(15)}>Choose Plan</button>
+        <button onClick={() => payment(9)}>Coming soon!</button>
       </div>
       <div className='sub-cards paid'>
         <h5>Premium</h5>
@@ -121,7 +118,7 @@ function Subscription({ user }) {
         <ul className='premium'>
           <li>
             <span class="material-icons">check_circle</span>
-            <span>1 event</span>    
+            <span>30 events</span>    
           </li>
           <li>
             <span class="material-icons">check_circle</span>
@@ -140,7 +137,7 @@ function Subscription({ user }) {
             <span>Access to influencers</span>
           </li>
         </ul>
-        <button onClick={() => payment(40)}>Choose Plan</button>
+        <button onClick={() => payment(20)}>Coming soon!</button>
       </div>
       </div>
     </div>

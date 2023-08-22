@@ -64,6 +64,17 @@
   cursor: pointer;
   margin-bottom: 40px;
 }
+
+.sub-cards .base-plan{
+  background-color: aliceblue;
+  border: #007bff solid 1px;
+  color:#1e1e1e;
+}
+.sub-cards .base-plan:hover{
+  background-color: aliceblue;
+  border: #007bff solid 1px;
+  color:#1e1e1e;
+}
   
 .sub-cards button:hover {
   background-color: #0062cc;
