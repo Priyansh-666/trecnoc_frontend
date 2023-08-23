@@ -40,6 +40,9 @@ function Create_event({ user }) {
   var dateTime = new Date(datetime);
   var timeZoneOffset = dateTime.getTimezoneOffset();
   dateTime.setMinutes(dateTime.getMinutes() - timeZoneOffset);
+  var timestamp = new Date();
+  var tzo = timestamp.getTimezoneOffset();
+  timestamp.setMinutes(timestamp.getMinutes() - tzo);
   const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
   const doc = {
@@ -48,6 +51,7 @@ function Create_event({ user }) {
     description: description,
     userId: user?.sub,
     username: user.name,
+    timestamp:timestamp,
     date: dateTime,
     signups: 0,
     status: "active",
