@@ -33,7 +33,7 @@ function Subscription({ user }) {
         body: JSON.stringify({ limit: limit }),
       });
       const data = await response.json();
-      navigate('/', { replace: true });
+      navigate('/subscription', { replace: true });
     } catch (err) {
       console.log(err.message);
     }
