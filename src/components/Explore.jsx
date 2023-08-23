@@ -25,7 +25,7 @@ const Explore = () => {
       const allEvents = await fetch(`${process.env.REACT_APP_API_NAVIGATION}/getevent`).then(res =>
         res.json()
       );
-      const activeEvents = allEvents.filter(event => event.status === "active");
+      const activeEvents = allEvents.filter(event => event.status === "active" && event.privacy === "public");
   
       setEvents(activeEvents);
     };
@@ -90,7 +90,6 @@ const Explore = () => {
               <p className='timecard'>{new Date(new Date(event.date).getTime() + timeZoneOffset * 60 * 1000).toLocaleString("en-US", options)}</p>
               <p className='cardsignups'>{event.signups} Signups</p>
             </div>
-            {/* <br /> */}
           </div>
         ))}
       </div>

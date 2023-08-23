@@ -24,6 +24,31 @@
     height: 85%;
     font-size: 1.1rem;
 }
+
+.div-privacy{
+    background-color: transparent;
+    width: 100%;
+    display: flex;
+    height: auto;
+    padding: 2rem 2.5rem;
+    flex-direction: column;
+
+}
+.div-privacy label{
+    padding-right: 1rem;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.0.8);
+}
+.div-privacy > select {
+    border: 1px dashed rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    border-radius: 1rem;
+
+}
+.div-privacy > select:focus {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
 .div1-main {
     background-color: transparent;
     width: 100%;

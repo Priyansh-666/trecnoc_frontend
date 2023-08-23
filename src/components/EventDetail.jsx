@@ -224,11 +224,15 @@ const EventDetail = ({ user }) => {
                 <button className='el-editbtn' onClick={handleEditClick}>Edit</button>
                 )}
             </div>
-          </div>
+            
+          </div>   
+
+
 
           </>
           )}
           <div className='el-time'>
+          <p>Visibility | {event.privacy}</p>
           <span>Time of event</span>
           <p>{new Date(new Date(event.date).getTime() + timeZoneOffset * 60 * 1000).toLocaleString('en-US', options)} | <b>{event.status}</b></p>
           </div>
