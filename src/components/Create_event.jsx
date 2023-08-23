@@ -43,6 +43,7 @@ function Create_event({ user }) {
     title: title,
     description: description,
     userId: user?.sub,
+    username:user.name,
     date: dateTime,
     signups: 0,
     status:"active",
@@ -119,13 +120,13 @@ function Create_event({ user }) {
               <input type="time" name="time" id="time" value={time} onChange={handleTimeChange} required/>
           </div>
             {/* </div> */}
-          <div className='image-div'>
+          {/* <div className='image-div'>
             <label htmlFor='' className='image-upload'>
               <span>Choose your image: </span>
             </label>
             <label htmlFor="image" className='browse-btn'>Browse</label>
             <input type="file" className='browse-btn-in' accept='image/*' name="image" id="image" onChange={handleImageChange} />
-          </div>
+          </div> */}
           <div className='submit-btn-div'>
             <button className='submit-btn' type='submit'>Create</button>
           </div>

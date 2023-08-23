@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './css/Explore.css';
-import abc from '../assets/sample.jpg';
+import abc from '../assets/bg-img.jpg';
 import './css/Card.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -70,10 +70,7 @@ const Explore = () => {
           <div onClick={() => navtodetails(event)} className="card" key={event._id}>
             <div
               className="cardin"
-              // style={{
-              //   backgroundImage: `url(${abc})`,
-              //   backgroundSize: 'cover',
-              // }}
+
             >
               <div className='tn'
               style={{
@@ -86,7 +83,9 @@ const Explore = () => {
 
             <div className='card-text'>
               <h2>{event.title}</h2>
+              <p className='carddesc'>{event.username}</p>
               <p className='carddesc'>{event.description}</p>
+
               <br /><br /><br />
               <p className='timecard'>{new Date(new Date(event.date).getTime() + timeZoneOffset * 60 * 1000).toLocaleString("en-US", options)}</p>
               <p className='cardsignups'>{event.signups} Signups</p>

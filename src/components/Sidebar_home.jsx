@@ -34,7 +34,7 @@ function Sidebar_home({ user }) {
       <div className='brandname'>
         <span><a href="#">TrecNoc</a></span>
       </div>
-      <div>
+      {/* <div>
         <span>
           <button className='side-home-btn' onClick={() => handleButtonClick('home', '/')}>
             <span class="material-icons-outlined">
@@ -43,7 +43,7 @@ function Sidebar_home({ user }) {
             Home
           </button>
         </span>
-      </div>
+      </div> */}
       <div>
         <span>
           <button onClick={() => handleButtonClick('events', '/')}>
