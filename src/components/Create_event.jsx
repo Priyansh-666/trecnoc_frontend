@@ -118,13 +118,13 @@ function Create_event({ user }) {
           </div> */}
               <textarea type="text" className='desc-div' name="description" id="description" value={description} onChange={handleDescriptionChange} required />
             </div>
-          </div>
-          <div className='div-privacy'>
-            <label htmlFor='privacy'>Privacy</label>
-            <select value={privacy} onChange={handleDropdownChange}>
-              <option value="public">Public</option>
-              <option value="private">Private</option>
-            </select>
+            <div className='div-privacy'>
+              <label htmlFor='privacy'>Privacy</label>
+              <select value={privacy} onChange={handleDropdownChange}>
+                <option value="public">Public</option>
+                <option value="private">Private</option>
+              </select>
+            </div>
           </div>
 
           <div className='div3'>

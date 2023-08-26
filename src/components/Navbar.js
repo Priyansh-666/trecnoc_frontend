@@ -11,7 +11,6 @@ function Navbar() {
 
     const [showDropdown, setShowDropdown] = useState(false);
     const [showPricingDropdown, setShowPricingDropdown] = useState(false);
-    const [showLoginDropdown, setShowLoginDropdown] = useState(false);
 
     const toggleDropdown = () => {
         setShowPricingDropdown(false);
@@ -22,9 +21,6 @@ function Navbar() {
         setShowPricingDropdown(!showPricingDropdown);
     };
 
-    const toggleLoginDropdown = () => {
-        setShowLoginDropdown(!showLoginDropdown);
-    };
 
     const navigate = useNavigate();
     const responseGoogle = async (response) => {
@@ -84,9 +80,9 @@ function Navbar() {
                                 Explore
                             </button>
                 </li>
-                <li className='f-color'>
+                {/* <li className='f-color'>
                     <button
-                            className='dark light'
+                            className='light'
                             onClick={toggleDropdown}
                         >Features</button>
                     <Link
@@ -99,14 +95,24 @@ function Navbar() {
 
                     >
                     </Link>
-                </li>
+                </li> */}
                 <li>
-                    <button
-                        className='light'
-                        onClick={togglePricingDropdown}
-                    >
-                        Pricing
+                <Link
+                            activeClass='active'
+                            to='subh-main'
+                            spy={true}
+                            smooth={true}
+                            offset={-70}
+                            duration={500}
+
+                        >
+                            <button
+                                className='light'
+                                onClick={togglePricingDropdown}
+                            >
+                        Organiser?
                     </button>
+                    </Link>
                     </li>
                     <li>
                         <Link
@@ -114,7 +120,7 @@ function Navbar() {
                             to='section5'
                             spy={true}
                             smooth={true}
-                            offset={-70}
+                            offset={30}
                             duration={500}
 
                         >
@@ -140,28 +146,22 @@ function Navbar() {
                     </li>
                 </ul>
             </nav>
-            {/* <ul className='navbar-nav2'> */}
-            <div className='login-zz'><button className='login' onClick={toggleLoginDropdown}>Log in</button></div>
-            {showLoginDropdown && (
-                <div className='login-dropdown'>
+                <div className='login-zz'>
 
                     <GoogleOAuthProvider
-                        clientId='443172810373-snnv2m331j9e6ng9sph7n27e09s1t26m.apps.googleusercontent.com'
-                        render={(renderProps) => (
-                            <button type='button' className='g-btn'>
-                                Sign in with Google
-                            </button>
-
-                        )
-                        }>
+                        clientId='443172810373-snnv2m331j9e6ng9sph7n27e09s1t26m.apps.googleusercontent.com'>
                         <GoogleLogin
                             onSuccess={responseGoogle}
                             onFailure={responseGoogle}
+                            shape='pill'
+                            text='Sign Up'
+                            theme='filled_black'
+                            size='large'
+                            type="standard"
                             cookiePolicy="single_host_origin"
                         />
                     </GoogleOAuthProvider>
-                </div>)}
-        {/* </ul> */}
+                </div>
     </div>
     );
 }

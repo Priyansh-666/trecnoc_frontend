@@ -15,10 +15,11 @@ div {
   #section5, #section6 {
     background-color: #121316;
     color: white;
-    height: 400px;
+    /* height: 400px; */
+    height: 100%;
     width: 100%;
-    border-top: 1px solid rgba(255,255,255,0.4);
-    border-bottom: 1px solid rgba(255,255,255,0.4);
+    /* border-top: 1px solid rgba(255,255,255,0.4);
+    border-bottom: 1px solid rgba(255,255,255,0.4); */
     padding: 5%;
     margin-bottom: 10px;
     justify-content: center;
@@ -30,7 +31,7 @@ div {
     letter-spacing: 1px;
     color: #FFFFFFCC;
   }
-
+  
 .box1:hover, .box2:hover, .box3:hover, .box4:hover {
   transform: scale(1.01);
   z-index: 2;
@@ -78,21 +79,86 @@ div {
 }
 .h-div-land {
   word-spacing: 10px;
-  font-size: 26px;
+  font-size: 30px;
   padding-top: 15%;
   text-transform: uppercase;
   display: inline-block;
   line-height: 1.2;
+  /* animation: colorChange 9s linear infinite; */
 }
+.h-div-land > h1:nth-child(1) {
+  animation: colorChange1 0.5s;
+}
+.h-div-land > h1:nth-child(2) {
+  animation: colorChange2 1s;
+}
+.h-div-land > h1:nth-child(3) {
+  animation: colorChange3 1.5s;
+}
+@keyframes colorChange1 {
+  0% {
+    color: transparent;
+    transform: translateY(-50px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes colorChange2 {
+  0% {
+    color: transparent;
+    transform: translateY(-200px);
+  }
+  50% {
+    color: transparent;
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes colorChange3 {
+  0% {
+    color: transparent;
+    transform: translateY(-300px);
+  }
+  33% {
+    color: transparent;
+  }
+  66% {
+    color: transparent;
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 .h-div-land > h1 {
   /* line-height: 0; */
 }
 .p-div-land {
   color: rgb(157, 157, 157);
   padding-top: 1%;
+  font-size: 20px;
+  animation: colorChange4 2.5s;
 }
+@keyframes colorChange4 {
+  0% {
+    color: transparent;
+    /* transform: translateY(-300px); */
+  }
+  33% {
+    color: transparent;
+  }
+  66% {
+    color: transparent;
+  }
+  100% {
+    color: rgb(157, 157, 157);
+  }
+}
+
 .btn-div-land{
-  padding-top: 4%;
+  padding-top: 2%;
 }
 .explore-btn-land {
   color: black;
@@ -104,13 +170,116 @@ div {
   border: none;
   outline: none;
   cursor: pointer;
+  animation: colorChange5 2.5s;
+}
+@keyframes colorChange5 {
+  0% {
+    background-color: transparent;
+    color: transparent;
+  }
+  33% {
+    background-color: transparent;
+    color: transparent;
+    
+  }
+  66% {
+    background-color: transparent;
+    color: transparent;
+  }
+  100% {
+    background-color: yellow;
+  }
 }
 .about-us-div  {
+
   color: white;
   font-family: 'poppins';
   font-size: 26px;
+  display: flex;
+  flex-direction: row;
+  /* flex-grow: 1; */
+  /* width: 100%; */
+  flex-grow: 0;
+  /* border: 1px solid white; */
+  height: 100%;
+}
+.aboutus1 {
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+  /* border: 1px solid white; */
+  width: 100%;
+  width: 60%;
+  margin-top: auto;
+  margin-bottom: auto;
+  
+}
+.imgdivaboutus {
+  /* width: 100%;  
+  height: 100vh; */
+  width: 40%;
+  height: fit-content;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* border: 1px solid white; */
 
 }
-.about-us-div > p {
-  font-size: 20px;
+.imgdivaboutus > img{
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+  /* border: 1px solid white; */
+  /* transform: translateY(-100px); */
+}
+.about-us-div > .aboutus1 > p {
+  font-size: 15px;
+  
+}
+.lp-sub-cont {
+  padding-bottom: 30px;
+  background-color: #121316;
+}
+#lp-sub {
+  /* padding: 100px; */
+  /* border: 1px solid white; */
+  width: 100%;
+  align-items: center;
+  display: flex;
+}
+
+
+.subh-main {
+  display: flex;
+  flex-direction: row;
+  /* border: 1px solid white; */
+  padding-left: 5%;
+  padding-right: 5%;
+  /* border: 1px solid white; */
+  /* transform: translateY(100px); */
+}
+.subh1 {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  flex-wrap: nowrap;
+  /* border: 1px solid white; */
+  /* width: fit-content; */
+  width: 65%;
+  text-align: right;
+  color: #cccccc;
+  font-size: 35px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.subh2 {
+  width: 40%;
+  height: fit-content;
+  /* border: 1px solid white; */
+}
+.subh2 > img{
+  padding-right: 20%;
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+  /* border: 1px solid white; */
 }

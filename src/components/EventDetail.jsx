@@ -30,6 +30,9 @@ const EventDetail = ({ user }) => {
   const [editedEvent, setEditedEvent] = useState({});
   const [signups, setSignups] = useState([]);
   const [dates, setDates] = useState([]);
+  const [privacy, setPrivacy] = useState(event.privacy); // Initialize with the default value
+
+
 
   const currentTime = new Date();
   const timeZoneOffset = currentTime.getTimezoneOffset();
@@ -45,6 +48,7 @@ const EventDetail = ({ user }) => {
       );
       setEvent(filteredEvents);
       setEditedEvent(filteredEvents[0]);
+
     };
     fetchEvents();
   }, [userId]);
@@ -101,6 +105,7 @@ const EventDetail = ({ user }) => {
     }
   };
 
+
   const handleEditClick = () => {
     setEditMode(true);
   };
@@ -109,6 +114,7 @@ const EventDetail = ({ user }) => {
     updateEvent({
       title: editedEvent.title,
       description: editedEvent.description,
+      privacy:editedEvent.privacy
     });
 
     setEvent([editedEvent]);
@@ -117,7 +123,9 @@ const EventDetail = ({ user }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setEditedEvent((prevState) => ({ ...prevState, [name]: value }));
+    if (name === 'title' || name === 'description' || name === 'privacy') {
+      setEditedEvent((prevState) => ({ ...prevState, [name]: value }));
+    }
   };
 
   const createGraph = () => {
@@ -164,91 +172,113 @@ const EventDetail = ({ user }) => {
   return (
     <div className="event-box1">
       <div className='event-landing-heading'>
-          Event Details
+        Event Details
       </div>
       <div className='detail'>
-      {event.map((event) => (
-        <div className="landing-div-box" key={event.id}>
-          {editMode ? (
-            <>
-            <div className='el-hp-btn-div'>
-              <div className='el-hp-div'>
-                <div className='el-heading'>
-                  <span>Change title</span>
-                  <br />
-                  <input
-                    type="text"
-                    name="title"
-                    value={editedEvent.title || ''}
-                    onChange={handleInputChange}
-                    />
-                </div>
-                <div className='el-para'>
-                  <span>Change about</span>
-                  <br />
-                  <textarea
-                  name="description"
-                  value={editedEvent.description || ''}
-                  onChange={handleInputChange}
-                  ></textarea>
+        {event.map((event) => (
+          <div className="landing-div-box" key={event.id}>
+            {editMode ? (
+              <>
+                <div className='el-hp-btn-div'>
+                  <div className='el-hp-div'>
+                    <div className='el-heading'>
+                      <span>Change title</span>
+                      <br />
+                      <input
+                        type="text"
+                        name="title"
+                        value={editedEvent.title || ''}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                    <div className='el-para'>
+                      <span>Change about</span>
+                      <br />
+                      <textarea
+                        name="description"
+                        value={editedEvent.description || ''}
+                        onChange={handleInputChange}
+                      ></textarea>
+                      <p>
+                        <strong>Visibility</strong> | {editedEvent.privacy}
+                      </p>
+                      <button
+                          name="privacy"
+                          value="private"
+                          onClick={handleInputChange}
+                          className='el-submitbtn'
+                        >
+                          Private
+                        </button>
+                        <button
+                          name="privacy"
+                          value="public"
+                          onClick={handleInputChange}
+                          className='el-submitbtn'
+                        >
+                          Public
+                        </button>
+
+                    </div>
+
                   </div>
-              </div>
 
-              <div className='el-flex'>
-              {editMode ? (
-              <button className='el-submitbtn' onClick={handleSubmitClick}>Submit</button>
-              ) : (
-                <button className='el-editbtn' onClick={handleEditClick}>Edit</button>
-                )}
+                  <div className='el-flex'>
+                    {editMode ? (
+                      <button className='el-submitbtn' onClick={handleSubmitClick}>Submit</button>
+                    ) : (
+                      <button className='el-editbtn' onClick={handleEditClick}>Edit</button>
+                    )}
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className='el-hp-btn-div'>
+                  <div className='el-hp-div'>
+                    <div className='el-heading'>
+                      <span>Event</span>
+                      <h1>{event.title}</h1>
+                    </div>
+                    <div className='el-para'>
+                      <span>About the event</span>
+                      <p className='el-para-fp'>{event.description}</p>
+                      <p><strong>Visibility</strong> | {event.privacy}</p>
+                    </div>
+                  </div>
+
+                  <div className='el-flex'>
+                    {editMode ? (
+                      <button className='submitbtn' onClick={handleSubmitClick}>Submit</button>
+                    ) : (
+                      <button className='el-editbtn' onClick={handleEditClick}>Edit</button>
+                    )}
+                  </div>
+
+                </div>
+
+
+
+              </>
+            )}
+            <div className='el-time'>
+
+              <span>Time of event</span>
+              <p>{new Date(new Date(event.date).getTime() + timeZoneOffset * 60 * 1000).toLocaleString('en-US', options)} | <b>{event.status}</b></p>
             </div>
+            <div className='el-urlcopy'>
+              <span>Copy this URL</span>
+              <p>https://trecnoc.vercel.app/event-detail/{event._id}</p>
             </div>
-            </>
-          ) : (
-          <>
-          <div className='el-hp-btn-div'>
-            <div className='el-hp-div'>
-              <div className='el-heading'>
-                <span>Event</span>
-                <h1>{event.title}</h1>
-              </div>
-              <div className='el-para'>
-                <span>About the event</span>
-                <p>{event.description}</p>
-              </div>
+            <div className='el-signups'>
+              <span>Sign-ups </span>
+              <p>{people.length} sign-ups on this event</p>
             </div>
-
-            <div className='el-flex'>
-              {editMode ? (
-              <button className='submitbtn' onClick={handleSubmitClick}>Submit</button>
-              ) : (
-                <button className='el-editbtn' onClick={handleEditClick}>Edit</button>
-                )}
+            <div className='charts'>
+              <canvas id="graph" style={{ width: '1px', height: '100%' }}></canvas>
             </div>
-            
-          </div>   
-
-
-
-          </>
-          )}
-          <div className='el-time'>
-          <p>Visibility | {event.privacy}</p>
-          <span>Time of event</span>
-          <p>{new Date(new Date(event.date).getTime() + timeZoneOffset * 60 * 1000).toLocaleString('en-US', options)} | <b>{event.status}</b></p>
           </div>
-          <div className='el-urlcopy'>
-            <span>Copy this URL</span>
-            <p>https://trecnoc.vercel.app/event-detail/{event._id}</p>
-          </div>
-          <div className='el-signups'>
-            <span>Sign-ups </span>
-            <p>{people.length} sign-ups on this event</p>
-          </div>
-          <div className='charts'>
-            <canvas id="graph" style={{ width: '1px', height: '100%' }}></canvas>
-          </div>
-        </div>
-      ))}
+        ))}
       </div>
     </div>
   );

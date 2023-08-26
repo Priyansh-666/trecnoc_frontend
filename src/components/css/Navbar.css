@@ -71,11 +71,10 @@
 }
 .login-zz {
   position: absolute;
-  background-color: rgba(18, 19, 22, 0.845);
   top: 5%;
   padding: 12px;
   border-radius: 2rem;
-  right: 5%;
+  right: 3%;
 }
 .brand-logo {
   color: white;
@@ -109,10 +108,13 @@
     color: white;
 }
 
-.g-btn {
-  background-color: white;
+/* .g-btn {
+  background-color: transparent;
   border: 10px solid black;
-}
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
 
 .login-dropdown {
   position: absolute;

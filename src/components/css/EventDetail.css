@@ -75,6 +75,9 @@
     background-color: transparent;
     margin-bottom: 20px;
 } 
+.el-para-fp {
+    margin-bottom: 20px;
+}
 .el-para, .el-inp-text {
     background-color: transparent;
 }
