@@ -1,9 +1,30 @@
 div {
     background-color: #121316;
   }
+  .landing-div::-webkit-scrollbar {
+    border-radius: 10px;
+    scrollbar-width: thin;
+    background-color: lightgreen;
+    height: 10px;
+    width: 10px;
+    overflow-y: scroll;
+  }
+  .landing-div::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: rgb(177, 233, 255);
+    height: 10px;
+    width: 10px;
+  }
+.landing-div::-webkit-scrollbar-thumb {
+    background-color: #6528F7;
+    border-radius: 10px;
+  }
+  .landing-div::-webkit-scrollbar-thumb:hover {
+    background-color: #6528F7;
+  }
   .container {
     width: 100%;
-    margin-top: 5%;
+    /* margin-top: 5%; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -12,16 +33,12 @@ div {
     overflow-x: hidden;
   }
   
-  #section5, #section6 {
+  #section5 {
     background-color: #121316;
     color: white;
-    /* height: 400px; */
     height: 100%;
     width: 100%;
-    /* border-top: 1px solid rgba(255,255,255,0.4);
-    border-bottom: 1px solid rgba(255,255,255,0.4); */
     padding: 5%;
-    margin-bottom: 10px;
     justify-content: center;
   }
   
@@ -37,8 +54,8 @@ div {
   z-index: 2;
 }
 
- .container p {
-    margin-top: 20px;
+ .aboutus1 > p {
+    margin-bottom: 20px;
     font-size: 30px;
     letter-spacing: 1px;
     color: #FFFFFF66;
@@ -191,7 +208,8 @@ div {
   }
 }
 .about-us-div  {
-
+  margin-top: 100px;
+  margin-bottom: 100px;
   color: white;
   font-family: 'poppins';
   font-size: 26px;
@@ -212,7 +230,9 @@ div {
   width: 60%;
   margin-top: auto;
   margin-bottom: auto;
-  
+}
+.aboutus1 > h4 {
+  margin-bottom: 10px;
 }
 .imgdivaboutus {
   /* width: 100%;  
@@ -282,4 +302,38 @@ div {
   object-fit: cover;
   height: 100%;
   /* border: 1px solid white; */
+}
+
+/* Contact Section */
+#section6 {
+  background-color: #121316;
+  color: white;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 20px;
+  justify-content: center;
+  padding-left: 5%;
+  padding-right: 5%;
+  display: flex;
+  gap: 30%;
+  font-size: 15px;
+  font-family: 'poppins';
+  flex-wrap: wrap;
+}
+.c1 {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.c1 > div {
+  margin-bottom: 5%;
+  align-items: center;
+}
+.c1 > div:first-child {
+  font-size: 30px;
+  font-weight: 600;
+}
+.c1:nth-child(2) > div:last-child {
+  transform: translateY(20px);
 }

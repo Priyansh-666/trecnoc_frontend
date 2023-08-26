@@ -94,6 +94,7 @@ const EventDetailLanding = () => {
           eventSubject: event.title,
           eventDescription: event.description,
           eventTimezone: event.timezone,
+          eventOrganizer: event.username,
         }),
       });
     } catch (error) {

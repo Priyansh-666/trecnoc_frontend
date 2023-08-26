@@ -102,7 +102,7 @@ function Navbar() {
                             to='subh-main'
                             spy={true}
                             smooth={true}
-                            offset={-70}
+                            offset={-50}
                             duration={500}
 
                         >
@@ -120,7 +120,7 @@ function Navbar() {
                             to='section5'
                             spy={true}
                             smooth={true}
-                            offset={30}
+                            offset={-50}
                             duration={500}
 
                         >

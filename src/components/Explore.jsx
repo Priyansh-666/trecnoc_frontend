@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom';
 const Explore = () => {
   const navigate = useNavigate();
   const [events, setEvents] = useState([]);
+  const [searchInput, setSearchInput] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
 
   const options = {
     hour: "numeric",
@@ -19,20 +21,19 @@ const Explore = () => {
   const currentTime = new Date();
   var timeZoneOffset = currentTime.getTimezoneOffset();
   currentTime.setMinutes(currentTime.getMinutes() - timeZoneOffset);
-  
+
   useEffect(() => {
     const fetchEvents = async () => {
       const allEvents = await fetch(`${process.env.REACT_APP_API_NAVIGATION}/getevent`).then(res =>
         res.json()
       );
       const activeEvents = allEvents.filter(event => event.status === "active" && event.privacy === "public");
-  
+
       setEvents(activeEvents);
     };
-  
+
     fetchEvents();
   }, []);
-  
 
   const navtodetails = event => {
     const eventId = event._id;
@@ -44,12 +45,25 @@ const Explore = () => {
   };
 
   const handleSearch = () => {
-    console.log('Perform search');
+    // Filter events based on the search input for title, description, or username
+    const filteredEvents = events.filter(event =>
+      event.title.toLowerCase().includes(searchInput.toLowerCase()) ||
+      event.description.toLowerCase().includes(searchInput.toLowerCase()) ||
+      event.username.toLowerCase().includes(searchInput.toLowerCase())
+    );
+
+    setSearchResults(filteredEvents);
+  };
+
+  const handleInputChange = (e) => {
+    // Update search input and trigger search on input change
+    const inputValue = e.target.value;
+    setSearchInput(inputValue);
+    handleSearch();
   };
 
   return (
     <div>
-
       <style>
         @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
       </style>
@@ -59,26 +73,26 @@ const Explore = () => {
             <button className='light' onClick={handleBack}>Go Back</button>
           </div>
           <div className="navbar-search">
-            <input type="text" placeholder="Search..." />
-            <button className='light' onClick={handleSearch}>Search</button>
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchInput}
+              onChange={handleInputChange}
+            />
           </div>
         </nav>
       </div>
 
       <div className="head">
-        {events.map(event => (
+        {(searchInput ? searchResults : events).map(event => (
           <div onClick={() => navtodetails(event)} className="card" key={event._id}>
             <div
               className="cardin"
-
-            >
-              <div className='tn'
               style={{
                 backgroundImage: `url(${abc})`,
                 backgroundSize: 'cover',
               }}
-              >
-              </div>
+            >
             </div>
 
             <div className='card-text'>
@@ -93,7 +107,7 @@ const Explore = () => {
           </div>
         ))}
       </div>
-      
+
     </div>
   );
 };

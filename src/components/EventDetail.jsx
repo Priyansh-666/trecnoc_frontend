@@ -199,14 +199,14 @@ const EventDetail = ({ user }) => {
                         value={editedEvent.description || ''}
                         onChange={handleInputChange}
                       ></textarea>
-                      <p>
+                      <p style={{marginTop: "20px"}}>
                         <strong>Visibility</strong> | {editedEvent.privacy}
                       </p>
                       <button
                           name="privacy"
                           value="private"
                           onClick={handleInputChange}
-                          className='el-submitbtn'
+                          className='el-pvtbtn'
                         >
                           Private
                         </button>
@@ -214,7 +214,7 @@ const EventDetail = ({ user }) => {
                           name="privacy"
                           value="public"
                           onClick={handleInputChange}
-                          className='el-submitbtn'
+                          className='el-pvtbtn'
                         >
                           Public
                         </button>

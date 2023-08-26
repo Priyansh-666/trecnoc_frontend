@@ -15,7 +15,7 @@ function Landing() {
   }
 
   return (
-    <div>
+    <div className='landing-div'>
       <style>
         @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
       </style>
@@ -25,11 +25,7 @@ function Landing() {
         {/* <Dropdown /> */}
       </div>
       <div className='main-land-div' style={{
-
-        // backgroundSize: 'cover',
-        height: '100vh',
-        // boxShadow: '0px 10px 20pz rgba(255,255,255,0.6)',
-        // borderRadius: '50% / 0 0 30% 30%',
+        height: '90vh',
       }}>
         {/* <div><img src={logo1} alt="Example GIF" /></div> */}
         <div className='h-div-land'>
@@ -163,14 +159,13 @@ function Landing() {
           <div className='aboutus1'>
             <h1>About Us</h1>
             <p>
-
               Welcome to TrecNoc, where we're passionate about fostering connections and experiences.</p>
-              <h4><strong>Our Mission:</strong></h4>
+              <h4><strong>Our Mission</strong></h4>
               <p>
               At TrecNoc, our mission is simple yet powerful: to empower communities to come together, create memorable moments, and expand their horizons. We believe that every community, no matter how big or small, deserves the tools to make their events shine.
               </p>
-              <h4><strong>What we offer:</strong></h4>
-              <p>
+            <h4><strong>What we offer</strong></h4>
+            <p>
               TrecNoc is your platform for bringing people together. We provide the canvas for you to paint your vision, whether it's an intimate gathering or a large-scale event. With us, you can discover exciting opportunities, create lasting memories, and expand your community like never before.
 
               </p>
@@ -186,8 +181,25 @@ function Landing() {
         </div>
 
         <div id='section6'>
-          <h2>Contact</h2>
-
+          <div className='c1'>
+            <div>Company</div>
+            <div>Whats New</div>
+            <div>About</div>
+            <div>Contact</div>
+          </div>
+          <div className='c1'>
+            <div>Support</div>
+            <div>Getting Started</div>
+            <div>FAQ's</div>
+            <div>Report</div>
+            <div>TrecNoc® 2023</div>
+          </div>
+          <div className='c1'>            
+            <div>Trust & Legal</div>
+            <div>Terms and Conditions</div>
+            <div>Privacy Notice</div>
+            <div>Cookie Notice</div>
+          </div>
         </div>
       </div>
     </div>
