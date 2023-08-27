@@ -1,11 +1,12 @@
 import { useNavigate, Router } from 'react-router-dom';
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Navbar from './Navbar';
-// import logo1 from './src/assets/logo1.mp4';
 import './css/Landing.css';
 import './css/Navbar.css';
-import bulbImg from '../assets/bulb.png';
+import bulbVid from '../assets/bulbVid.mp4';
+import bulbVid1 from '../assets/bulbVid1.mp4';
 import calender from '../assets/cal.png';
+import world from '../assets/world.jpg'
 
 function Landing() {
 
@@ -13,6 +14,32 @@ function Landing() {
   const Explore = () => {
     navigate('/explore', { replace: true })
   }
+  
+  const [hasSecondVideoPlayed, setHasSecondVideoPlayed] = useState(false);
+
+  const secondVideoRef = useRef();
+
+  const checkVideoInViewport = () => {
+    const video = secondVideoRef.current;
+    if (!video) return;
+
+    const rect = video.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+
+    if (isVisible && !hasSecondVideoPlayed) {
+      setHasSecondVideoPlayed(true);
+      video.play();
+    }
+  };
+
+  useEffect(() => {
+    // Play the second video when it comes into the viewport
+    window.addEventListener('scroll', checkVideoInViewport);
+    checkVideoInViewport(); // Check once on initial load
+    return () => {
+      window.removeEventListener('scroll', checkVideoInViewport);
+    };
+  }, [hasSecondVideoPlayed]);
 
   return (
     <div className='landing-div'>
@@ -27,20 +54,26 @@ function Landing() {
       <div className='main-land-div' style={{
         height: '90vh',
       }}>
-        {/* <div><img src={logo1} alt="Example GIF" /></div> */}
-        <div className='h-div-land'>
-          <h1>Empower your</h1>
-          <h1>Community with</h1>
-          <h1>TrecNoc</h1>
+        <div className='opening-div'>
+          <div className='h-div-land'>
+            <h1>Empower your</h1>
+            <h1>Community with</h1>
+            <h1 className='main-word' data-text="TrecNoc">TrecNoc</h1>
+          </div>
+          <div className='p-div-land'>
+            <p>TrecNoc opens doors to community growth, encouraging </p>
+            <p>Discovery , Creation and Expansion</p>
+            {/* <p>Lorem ipsum dolor sit amet consectetur.</p>
+            <p>Lorem ipsum dolor sit amet..</p> */}
+          </div>
+          <div className='btn-div-land'>
+            <button className='explore-btn-land' onClick={Explore}>Explore Events</button>
+          </div>
         </div>
-        <div className='p-div-land'>
-          <p>TrecNoc opens doors to community growth, encouraging </p>
-          <p>Discovery , Creation and Expansion</p>
-          {/* <p>Lorem ipsum dolor sit amet consectetur.</p>
-          <p>Lorem ipsum dolor sit amet..</p> */}
-        </div>
-        <div className='btn-div-land'>
-          <button className='explore-btn-land' onClick={Explore}>Explore Events</button>
+        <div className='videogen1'>
+        <video src={bulbVid1} autoPlay muted></video>
+        {/* <img src={world}></img> */}
+
         </div>
       </div>
       <div className="container">
@@ -176,7 +209,14 @@ function Landing() {
              <p><strong> Explore TrecNoc today and start creating your own unique experiences.</strong></p>
           </div>
           <div className='imgdivaboutus'>
-            <img src={bulbImg} alt="" />
+            {/* <video id="autoplay-video" src={bulbVid} autoPlay></video> */}
+            <video
+            id="autoplay-video"
+            ref={secondVideoRef}
+            src={bulbVid}
+            autoPlay={!hasSecondVideoPlayed}
+          ></video>
+
           </div>
         </div>
 
