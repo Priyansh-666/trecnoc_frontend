@@ -133,7 +133,7 @@ function Landing() {
                   <span class="material-icons">
                     check_circle
                   </span>
-                  <span>1 event</span>
+                  <span>5 event</span>
                 </li>
                 <li style={{ color: "gray" }}>
                   <span class="material-icons">check_circle</span>
@@ -164,7 +164,7 @@ function Landing() {
               <ul className='premium'>
                 <li style={{ color: "gray" }}>
                   <span class="material-icons">check_circle</span>
-                  <span>1 event</span>
+                  <span>30 event</span>
                 </li>
                 <li style={{ color: "gray" }}>
                   <span class="material-icons">check_circle</span>
