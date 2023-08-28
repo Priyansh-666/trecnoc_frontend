@@ -215,6 +215,7 @@ function Landing() {
             ref={secondVideoRef}
             src={bulbVid}
             autoPlay={!hasSecondVideoPlayed}
+            muted
           ></video>
 
           </div>
